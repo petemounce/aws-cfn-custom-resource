@@ -1,10 +1,3 @@
-var _ = require('lodash');
-var aws = require('aws-sdk');
-var q = require('q');
-var fs = require('fs');
-var path = require('path');
-var child_process = require('child_process');
-
 module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
