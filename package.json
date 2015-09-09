@@ -1,0 +1,50 @@
+{
+  "name": "aws-cfn-custom-resource",
+  "version": "1.0.0",
+  "description": "Library to help write AWS CloudFormation custom resources.",
+  "main": "lib/resource.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bazaarvoice/aws-cfn-custom-resource.git"
+  },
+  "keywords": [
+    "aws",
+    "amazon",
+    "cloudformation"
+  ],
+  "author": {
+    "name": "Bazaarvoice",
+    "url": "http://www.bazaarvoice.com/"
+  },
+  "contributers": [
+    {
+      "name": "Cory Thomas",
+      "email": "cory.thomas@bazaarvoice.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bazaarvoice/aws-cfn-custom-resource/issues"
+  },
+  "homepage": "https://github.com/bazaarvoice/aws-cfn-custom-resource",
+  "dependencies": {
+    "aws-sdk": "^2.1.50",
+    "lodash": "^3.10.1",
+    "q": "^1.4.1",
+    "randomstring": "^1.1.0"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-nodeunit": "^0.4.1"
+  }
+}
