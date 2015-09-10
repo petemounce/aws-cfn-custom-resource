@@ -72,7 +72,7 @@ A handler should return one of the following:
     vendor. If not provided, a resource id is generated.
   * `data` - _optional_ - Custom resource provider-defined name-value pairs to send
     with the response. The values provided here can be accessed by name in
-    the template with _Fn::GetAtt_.
+    the template with <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html">Fn::GetAtt</a>.
 * a promise that results in one of the above values
 
 A handler may also throw an error to indicate failure.
