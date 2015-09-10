@@ -1,0 +1,14 @@
+extends: eslint:recommended
+env:
+    node: true
+rules:
+    no-console: 0
+    semi: 2
+    strict: [2, "global"]
+    block-scoped-var: 2
+    consistent-return: 2
+    curly: 2
+    dot-notation: 2
+    dot-location: [2, "property"]
+    eqeqeq: 2
+    no-alert: 2

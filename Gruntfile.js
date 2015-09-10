@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
@@ -5,14 +7,17 @@ module.exports = function (grunt) {
         nodeunit: {
             all: ['lib/*_test.js', '*_test.js']
         },
-        jshint: {
-            all: ['*.js', 'lib/**/*.js']
+        eslint: {
+            src: ['*.js', 'lib/**/*.js'],
+            options: {
+                configFile: 'conf/eslint.yaml'
+            }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks("gruntify-eslint");
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
     // Task Definitions
-    grunt.registerTask('default', ['jshint', 'nodeunit']);
+    grunt.registerTask('default', ['eslint', 'nodeunit']);
 };
