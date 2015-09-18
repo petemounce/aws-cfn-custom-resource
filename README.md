@@ -4,6 +4,12 @@ A node.js library to help write CloudFormation custom resources.
 
 # Usage
 
+## Install
+
+Install the module: `npm install aws-cfn-custom-resource --save`
+
+Import the module: `var resource = require('aws-cfn-custom-resource');`
+
 ## Handler
 
 Create a module for the main custom resource handler. This handler maps custom
@@ -19,7 +25,7 @@ resource.
 var resource = require('aws-cfn-custom-resource');
 
 exports.handler = resource.handler({
-    'Custom::MyCustomResource': './lib/my-custom-resource'
+  'Custom::MyCustomResource': './lib/my-custom-resource'
 });
 ```
 
@@ -81,7 +87,16 @@ A handler may also throw an error to indicate failure.
 
 If the resource interacts with AWS APIs, it should also export an
 <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html">IAM policy document</a>
-that defines the required permissions as `IAM_POLICY`.
+that defines the required permissions as `IAM_POLICY`. The policies can be
+extracted as part of custom resource deployment using `generatePolicies` from
+`aws-cfn-custom-resource/deploy`.
+
+```javascript
+var deploy = require('aws-cfn-custom-resource/deploy');
+var policies = deploy.generatePolicies({
+  'Custom::MyCustomResource': './lib/my-custom-resource'
+});
+```
 
 This library provides a helper for the AWS JavaScript SDK that converts SDK
 functions from callback to promises. It also logs all requests and responses.
@@ -102,13 +117,13 @@ exports.IAM_POLICY = {
 };
 
 exports.handleCreate = function (event) {
-    var session = new resource.aws.Session();
-    var ec2 = session.client('EC2');
+  var session = new resource.aws.Session();
+  var ec2 = session.client('EC2');
 
-    return ec2.describeInstances({InstanceIds: ['i-234232']})
-    .then(function (result) {
-        // do something magical
-    });
+  return ec2.describeInstances({InstanceIds: ['i-234232']})
+  .then(function (result) {
+      // do something magical
+  });
 };
 ```
 
@@ -118,41 +133,41 @@ exports.handleCreate = function (event) {
 
 ```javascript
 exports.handleDelete = function (event) {
-    // Return nothing and the custom resource responds with success.
-    // Can also:
-    //   throw new Error("some message");
-    //   -- or
-    //   var resource = require('aws-cfn-custom-resource');
-    //   throw resource.newError("MyException", "some message");
-    //   -- or
-    //   return {physicalResourceId: "myResource"};
+  // Return nothing and the custom resource responds with success.
+  // Can also:
+  //   throw new Error("some message");
+  //   -- or
+  //   var resource = require('aws-cfn-custom-resource');
+  //   throw resource.newError("MyException", "some message");
+  //   -- or
+  //   return {physicalResourceId: "myResource"};
 
-    // You can also do the following:
-    //   throw "some message";
-    // However, you will not get a stack trace in this case. It is recommended
-    // to throw Error instead.
+  // You can also do the following:
+  //   throw "some message";
+  // However, you will not get a stack trace in this case. It is recommended
+  // to throw Error instead.
 };
 
 exports.handleUpdate = function (event) {
-    // Async handlers should respond with a promise.
-    var Q = require('q');
-    var deferred = Q.defer();
+  // Async handlers should respond with a promise.
+  var Q = require('q');
+  var deferred = Q.defer();
 
-    doSomethingAsync(function (err, result) {
-        if (err) {
-            deferred.reject(err);
-        } else {
-            deferred.resolve({
-                physicalResourceId: 'SomeResourceId',
-                data: {
-                    key1: "Value",
-                    key2: "Value2"
-                }
-            });
+  doSomethingAsync(function (err, result) {
+    if (err) {
+      deferred.reject(err);
+    } else {
+      deferred.resolve({
+        physicalResourceId: 'SomeResourceId',
+        data: {
+            key1: "Value",
+            key2: "Value2"
         }
-    });
+      });
+    }
+  });
 
-    return deferred.promise();
+  return deferred.promise();
 };
 
 // Sometimes it makes sense to use the same implementation for create & update.
