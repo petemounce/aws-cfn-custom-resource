@@ -79,8 +79,9 @@ A handler may also throw an error to indicate failure.
 
 ### AWS API
 
-If the resource interacts with AWS APIs, it should also export a list of IAM
-policy statements that define the required permissions as `IAM_POLICY`.
+If the resource interacts with AWS APIs, it should also export an
+<a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html">IAM policy document</a>
+that defines the required permissions as `IAM_POLICY`.
 
 This library provides a helper for the AWS JavaScript SDK that converts SDK
 functions from callback to promises. It also logs all requests and responses.
@@ -89,13 +90,16 @@ The helper can also make it easier to stub/mock AWS APIs in unit tests.
 ```javascript
 var resource = require('aws-cfn-custom-resource');
 
-exports.IAM_POLICY = [
+exports.IAM_POLICY = {
+  Version: '2012-10-17',
+  Statement: [
     {
-        Effect: "Allow",
-        Action: ["ec2:Describe*"],
-        Resource: "*"
+      Effect: 'Allow',
+      Action: 's3:ListBucket',
+      Resource: 'arn:aws:s3:::example_bucket'
     }
-];
+  ]
+};
 
 exports.handleCreate = function (event) {
     var session = new resource.aws.Session();
