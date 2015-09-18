@@ -110,8 +110,8 @@ exports.IAM_POLICY = {
   Statement: [
     {
       Effect: 'Allow',
-      Action: 's3:ListBucket',
-      Resource: 'arn:aws:s3:::example_bucket'
+      Action: ['s3:ListBucket'],
+      Resource: ['arn:aws:s3:::example_bucket']
     }
   ]
 };
