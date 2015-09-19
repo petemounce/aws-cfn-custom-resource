@@ -86,8 +86,8 @@ A handler may also throw an error to indicate failure.
 ### AWS API
 
 This library provides a helper for the AWS JavaScript SDK that converts SDK
-functions from callback to promises. It also logs all requests and responses.
-The helper can also make it easier to stub/mock AWS APIs in unit tests.
+functions from callback to promises.
+The helper can make it easier to stub/mock AWS APIs in unit tests.
 
 ```javascript
 var resource = require('aws-cfn-custom-resource');
@@ -136,8 +136,8 @@ exports.handleUpdate = function (event) {
       deferred.resolve({
         physicalResourceId: 'SomeResourceId',
         data: {
-            key1: "Value",
-            key2: "Value2"
+          key1: "Value",
+          key2: "Value2"
         }
       });
     }
