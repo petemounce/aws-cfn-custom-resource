@@ -1,6 +1,6 @@
 'use strict';
 
-var cfn = require('./cfn');
+var cfn = require('../lib/cfn');
 var _ = require('lodash');
 
 exports.testParseStackId = function (test) {

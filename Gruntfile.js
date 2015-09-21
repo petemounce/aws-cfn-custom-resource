@@ -5,10 +5,10 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     nodeunit: {
-      all: ['lib/*_test.js', '*_test.js']
+      all: ['test/**/*_test.js']
     },
     eslint: {
-      src: ['*.js', 'lib/**/*.js'],
+      src: ['*.js', 'lib/**/*.js', 'test/**/*.js'],
       options: {
         configFile: 'conf/eslint.yaml'
       }
