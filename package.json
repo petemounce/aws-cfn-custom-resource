@@ -1,6 +1,6 @@
 {
   "name": "aws-cfn-custom-resource",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library to help write AWS CloudFormation custom resources.",
   "main": "lib/resource.js",
   "scripts": {
