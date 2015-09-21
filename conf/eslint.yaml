@@ -6,7 +6,6 @@ rules:
     - 2
     - 1tbs
     - allowSingleLine: true
-    no-console: 0
     semi: 2
     strict: [2, "global"]
     block-scoped-var: 2
