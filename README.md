@@ -25,7 +25,7 @@ resource.
 var resource = require('aws-cfn-custom-resource');
 
 exports.handler = resource.handler({
-  'Custom::MyCustomResource': './lib/my-custom-resource'
+  'Custom::MyCustomResource': function () { return require('./lib/my-custom-resource'); }
 });
 ```
 
