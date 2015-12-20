@@ -23,6 +23,10 @@
     {
       "name": "Cory Thomas",
       "email": "cory.thomas@bazaarvoice.com"
+    },
+    {
+      "name": "Peter Mounce",
+      "email": "public@neverrunwithscissors.com"
     }
   ],
   "license": "Apache-2.0",
